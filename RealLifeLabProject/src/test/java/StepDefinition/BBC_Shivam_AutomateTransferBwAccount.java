@@ -12,7 +12,7 @@ import io.cucumber.java.en.When;
 
 import Utilities.ExcelRead;
 
-public class AutomateTransferBwAccount extends Driver {
+public class BBC_Shivam_AutomateTransferBwAccount extends Driver {
 	
 	
 	@Given("a user is on the Log In Page of the Website")
@@ -38,6 +38,7 @@ public class AutomateTransferBwAccount extends Driver {
 	public void the_user_clicks_on_transfer_between_accounts() throws InterruptedException {
 		Thread.sleep(2000);
 		clickTransferBetweenAccount.ClickTransferBetweenAccounts();
+		
 		/*loginPage.ClickUsername();
         loginPage.ClickPassword();
         loginPage.ClickSubmit();
@@ -46,23 +47,52 @@ public class AutomateTransferBwAccount extends Driver {
 
 	@When("they select the From Account from the Dropdown")
 	public void they_select_the_from_account_from_the_dropdown() throws IOException, InterruptedException {
-		 String[][] data = ExcelRead.getData("C:\\Users\\hp\\Desktop\\TransferMoneyRRL.xlsx", "Sheet1");
-		 transferBetweenAccount.ClickSelectAccountType();
-         transferBetweenAccount.ClickSelectAccountToType();
-	        for (int i = 0; i < data.length; i++) {
-	            try {
-	            	
-	                String amount = data[i][0];
-	                transferBetweenAccount.EnterAmount(amount);
-	                
-	            } catch (Exception e) {
-	                e.printStackTrace(); 
-	            }
-	            
-                transferBetweenAccount.ClickSubmit();
-                Thread.sleep(2000);
-	        }
-	}
+		
+		
+		try {
+			
+			String[][] data = ExcelRead.getData("C:\\Users\\hp\\Desktop\\TransferMoneyRRL.xlsx", "Sheet1");
+			 transferBetweenAccount.ClickSelectAccountType();
+	         transferBetweenAccount.ClickSelectAccountToType();
+		        for (int i = 0; i < data.length; i++) {
+		            try {
+		            	
+		                String amount = data[i][0];
+		                transferBetweenAccount.EnterAmount(amount);
+		                
+		            } catch (Exception e) {
+		                e.printStackTrace(); 
+		            }
+		            
+	                transferBetweenAccount.ClickSubmit();
+	              //  Thread.sleep(2000);
+		        }
+			
+		} catch (Exception e) {
+			loginPage.ClickUsername();
+	        loginPage.ClickPassword();
+	        loginPage.ClickSubmit();
+			
+			String[][] data = ExcelRead.getData("C:\\Users\\hp\\Desktop\\TransferMoneyRRL.xlsx", "Sheet1");
+			 transferBetweenAccount.ClickSelectAccountType();
+	         transferBetweenAccount.ClickSelectAccountToType();
+		        for (int i = 0; i < data.length; i++) {
+		            try {
+		            	
+		                String amount = data[i][0];
+		                transferBetweenAccount.EnterAmount(amount);
+		                
+		            } catch (Exception e1) {
+		                e.printStackTrace(); 
+		            }
+		            
+	                transferBetweenAccount.ClickSubmit();
+	                Thread.sleep(2000);
+		        }
+		}
+		 
+		 }
+	
 
 	@When("they select the To Account from the Dropdown")
 	public void they_select_the_to_account_from_the_dropdown() {

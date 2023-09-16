@@ -2,6 +2,7 @@ package StepDefinition;
 
 import io.cucumber.java.Scenario;
 import io.cucumber.java.After;
+//import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
 public class BeforeAfter extends Tools {
@@ -14,7 +15,7 @@ public class BeforeAfter extends Tools {
 	
 	@After
 	public void tearDown() {
-		//driver.quit();
+	driver.quit();
 	}
 	
 }
